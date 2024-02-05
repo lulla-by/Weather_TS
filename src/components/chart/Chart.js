@@ -23,8 +23,6 @@ const Chart = () => {
     return value;
   });
 
-  console.log(filteredData);
-
   const makeSeries = (data) => {
     let temperatureData = [];
     let precipitationData = [];
