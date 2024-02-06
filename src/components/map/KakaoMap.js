@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
 import classes from './KakaoMap.module.css';
@@ -12,6 +12,8 @@ const { kakao } = window;
 const KakaoMap = () => {
   const state = useSelector((state) => state.region);
   const dispatch = useDispatch();
+  const container = useRef(null);
+  const [map, setMap] = useState(null);
 
   // 날씨정보를 받는 함수
   const getWeatherData = async (lat, long) => {
@@ -32,25 +34,34 @@ const KakaoMap = () => {
       const filteredData = groupByFcstTime(data);
       dispatch(weatherActions.changeChartWeather(filteredData));
     } catch (error) {
-          alert("다시 입력해주세요")
+      alert('다시 입력해주세요');
     }
     dispatch(weatherActions.initialRegion({ lat, long }));
   };
+
+  function addMarker(position) {
+    let marker = new kakao.maps.Marker({
+      position: position,
+    });
+
+    marker.setMap(map);
+  }
 
   // 지도에 표시하는 함수
   const createMap = async (position) => {
     try {
       const coords = position.coords;
       const { latitude, longitude } = coords;
-      const container = document.getElementById('map');
-      const msgBox =
-        '<div style="width:150px;text-align:center;padding:6px 0;">오늘의 여행지</div>';
 
       const options = {
         center: new kakao.maps.LatLng(latitude, longitude),
         level: 5,
       };
-      const map = new kakao.maps.Map(container, options);
+
+      if (!map) {
+        const newMap = new kakao.maps.Map(container.current, options);
+        setMap(newMap);
+      }
 
       // 검색한 값이 있을 경우
       if (state !== '') {
@@ -65,20 +76,14 @@ const KakaoMap = () => {
 
           // 2. 유효한 주소의 경우 => 바뀐 위경도 보내기
           if (status === kakao.maps.services.Status.OK) {
+            // setMap(newMap);
+            
             let coords = new kakao.maps.LatLng(result[0].y, result[0].x);
-            // 결과값으로 받은 위치를 마커로 표시
-            let marker = new kakao.maps.Marker({
-              map: map,
-              position: coords,
-            });
 
             map.setCenter(coords);
+            map.setLevel(5);
 
-            // // 인포윈도우로 장소에 대한 설명을 표시합니다
-            let infowindow = new kakao.maps.InfoWindow({
-              content: msgBox,
-            });
-            infowindow.open(map, marker);
+            addMarker(coords);
 
             let { La, Ma } = coords;
             getWeatherData(Ma, La);
@@ -106,7 +111,7 @@ const KakaoMap = () => {
 
   return (
     <>
-      <div id="map" className={classes.container}></div>
+      <div ref={container} className={classes.container}></div>
     </>
   );
 };
