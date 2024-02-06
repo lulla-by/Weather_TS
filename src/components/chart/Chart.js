@@ -11,12 +11,11 @@ const Chart = () => {
   const chartName = chartShowStata ? 'Close Chart' : 'Show Chart';
 
   function convertDateTime(dateTime) {
-    const year = dateTime.slice(2, 4);
     const month = dateTime.slice(4, 6);
     const day = dateTime.slice(6, 8);
     const hour = dateTime.slice(8, 10);
 
-    return `${year}.${month}.${day} ${hour}시`;
+    return `${month}/${day} ${hour}시`;
   }
 
   const filteredData = Object.entries(weatherData).map(([key, value]) => {
