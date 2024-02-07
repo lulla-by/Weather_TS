@@ -1,7 +1,7 @@
 import React from 'react'
-import Card from '../../ui/Card'
+import Card from 'ui/Card'
 import classes from "./Clothes.module.css"
-import image from "../../assets/clothes/우산.png"
+import image from "assets/clothes/우산.png"
 import { useSelector } from 'react-redux'
 const Clothes = ({ props,data }) => {
   let { temperature, precipitationType } = props;

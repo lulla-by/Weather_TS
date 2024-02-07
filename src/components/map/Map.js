@@ -1,6 +1,6 @@
 import React from 'react'
-import Search from './Search'
-import KakaoMap from './KakaoMap'
+import Search from 'components/map/Search'
+import KakaoMap from 'components/map/KakaoMap'
 
 const Map = () => {
   return (

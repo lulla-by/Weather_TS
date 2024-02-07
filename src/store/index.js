@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import weatherReducer from "./weatherReducer";
+import weatherReducer from "store/weatherReducer";
 
 // 무엇을 사용하든, 리덕스에는 전역 상태를 담당하는 단 하나의 주요 리듀서 함수만 있어야 함
 //configureStore에서는 리듀서의 값이 단일 리듀서가 될 수 있음

@@ -1,9 +1,9 @@
 import React from 'react';
-import Information from './Information';
-import Clothes from './Clothes';
+import Information from 'components/contents/Information';
+import Clothes from 'components/contents/Clothes';
 import { useSelector } from 'react-redux';
 import classes from './Contents.module.css';
-import Loading from '../../ui/Loading';
+import Loading from 'ui/Loading';
 
 const Contents = () => {
   const weatherData = useSelector((state) => state.chartWeather);

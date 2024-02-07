@@ -1,11 +1,11 @@
-import Map from './components/map/Map';
-import Contents from './components/contents/Contents';
-import Layout from './ui/Layout';
+import Map from 'components/map/Map';
+import Contents from 'components/contents/Contents';
+import Layout from 'ui/Layout';
 import { Fragment } from 'react';
-import classes from "./App.module.css"
-import Chart from './components/chart/Chart';
+import classes from "App.module.css"
+import Chart from 'components/chart/Chart';
 import { useSelector } from 'react-redux';
-import AcessDenined from './components/error/AcessDenined';
+import AcessDenined from 'components/error/AcessDenined';
 
 function App() {
   const permission = useSelector(state => state.isLocationPermission)

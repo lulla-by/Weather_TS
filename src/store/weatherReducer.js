@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getDataObject } from "./getData";
+import { getDataObject } from "store/getData";
 
 
 

@@ -1,9 +1,9 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { weatherActions } from '../../store/weatherReducer';
+import { weatherActions } from 'store/weatherReducer';
 import classes from "./Search.module.css"
-import Button from '../../ui/Button';
+import Button from 'ui/Button';
 
 const Search = () => {
   const [region, setRegion] = useState("")

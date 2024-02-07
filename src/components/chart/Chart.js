@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import ApexCharts from 'react-apexcharts';
 import { useSelector } from 'react-redux';
-import Button from '../../ui/Button';
-import Loading from '../../ui/Loading';
+import Button from 'ui/Button';
+import Loading from 'ui/Loading';
 
 const Chart = () => {
   const weatherData = useSelector((state) => state.chartWeather);

@@ -2,10 +2,10 @@ import React, { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
 import classes from './KakaoMap.module.css';
-import { weatherActions } from '../../store/weatherReducer';
-import { dfsXyConv } from '../../utils/xyConverter';
-import { makeBaseTime } from '../../utils/getBaseTime';
-import { groupByFcstTime } from '../../utils/getData';
+import { weatherActions } from 'store/weatherReducer';
+import { dfsXyConv } from 'utils/xyConverter';
+import { makeBaseTime } from 'utils/getBaseTime';
+import { groupByFcstTime } from 'utils/getData';
 
 const { kakao } = window;
 
