@@ -5,12 +5,12 @@ import { getDataObject } from "./getData";
 
 let initialState = {
   current:{
-    lat:"",
-    long:""
+    lat:0,
+    long:0
   },
-  chartWeather:"",
+  chartWeather:{},
   region:"",
-  isLoading:"",
+  isLoading:false,
   isLocationPermission:true
 };
 
@@ -20,8 +20,8 @@ const weatherReducer = createSlice({
   initialState: initialState,
   reducers: {
     initialRegion(state,action){
-      state.current.lat = action.payload.La
-      state.current.long = action.payload.Ma
+      state.current.lat = action.payload.lat
+      state.current.long = action.payload.long
     },
     changeChartWeather(state,action){
       const data = getDataObject(action.payload)
