@@ -25,7 +25,6 @@ const Contents = () => {
 
   switch (PTY) {
     case "0":
-      console.log("없음");
       precipitationType = '없음';
       break;
     case "1":
