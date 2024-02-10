@@ -3,12 +3,15 @@ import Card from 'ui/Card'
 import classes from "./Clothes.module.css"
 import image from "assets/clothes/우산.png"
 import { useSelector } from 'react-redux'
-const Clothes = ({ props,data }) => {
+import { ContentsPropsType, StoreInitialType, WeatherItem } from 'components/types/types'
+
+
+const Clothes = ({ props}:ContentsPropsType) => {
   let { temperature, precipitationType } = props;
 
-  let region = useSelector((state:any) => state.region)
+  let region = useSelector((state:StoreInitialType<WeatherItem>) => state.region)
   
-  const getOuterItem = (temp) => {
+  const getOuterItem = (temp:number) => {
     if (temp < 0) {
       return "패딩"
     } else if (temp < 9) {
@@ -23,7 +26,7 @@ const Clothes = ({ props,data }) => {
       return "아우터 착용 필요없음"
     }
   }
-  const getTopItem = (temp) => {
+  const getTopItem = (temp:number) => {
     if (temp < 17) {
       return "두꺼운긴팔"
     } else if (temp < 22) {
@@ -34,7 +37,7 @@ const Clothes = ({ props,data }) => {
       return "민소매"
     }
   }
-  const getBottomItem = (temp) => {
+  const getBottomItem = (temp:number) => {
     if (temp < 19) {
       return "두꺼운바지"
     } else if (temp < 26) {
@@ -44,11 +47,11 @@ const Clothes = ({ props,data }) => {
     }
   }
 
-  const outerItem = getOuterItem(temperature)
-  const topItem = getTopItem(temperature)
-  const bottomItem = getBottomItem(temperature)
+  const outerItem = getOuterItem(+temperature)
+  const topItem = getTopItem(+temperature)
+  const bottomItem = getBottomItem(+temperature)
 
-  const outer = (outerItem) => {
+  const outer = (outerItem:string) => {
     if (outerItem == "아우터 착용 필요없음") {
       return "필요없음";
     } else {
