@@ -17,7 +17,7 @@
     "jsx": "react-jsx",
     "incremental": true,
     "baseUrl": "src",
-    "noImplicitAny": false
+    "noImplicitAny": true
   },
   "types": ["kakao.maps.d.ts"],
   "include": ["src"]
