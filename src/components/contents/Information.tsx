@@ -1,16 +1,26 @@
-import React from 'react'
-import Card from 'ui/Card'
-import classes from './information.module.css'
+import React from 'react';
+import Card from 'ui/Card';
+import classes from './information.module.css';
 import { getNowWeather } from 'utils/getNowWeather';
+import { ContentsPropsType } from 'components/types/types';
 
-const Information = ({ props,data}) => {
 
-  const { temperature, precipitation, humidity, precipitationType, skyCondition } = props;
-  const weatherClasseName:any = getNowWeather(precipitationType, skyCondition)
-  const weatherMsg = "현재 날씨: " + (weatherClasseName && weatherClasseName[1])
+const Information = ({ props }: ContentsPropsType) => {
+  const {
+    temperature,
+    precipitation,
+    humidity,
+    precipitationType,
+    skyCondition,
+  } = props;
+  const weatherClasseName:string[] = getNowWeather(precipitationType, skyCondition);
+  
+  const weatherMsg =
+    '현재 날씨: ' + (weatherClasseName && weatherClasseName[1]);
 
-  const weatherImgSrc = require(`assets/${weatherClasseName[1].split(" ").join("")}.png`)
-
+  const weatherImgSrc = require(`assets/${weatherClasseName[1]
+    .split(' ')
+    .join('')}.png`);
 
   return (
     <Card>
@@ -23,7 +33,7 @@ const Information = ({ props,data}) => {
           <p>기온: {temperature}℃</p>
         </li>
         <li className={classes.info}>
-          <p>강수량: {(precipitation === "강수없음" ? "0mm" : (precipitation))}</p>
+          <p>강수량: {precipitation === '강수없음' ? '0mm' : precipitation}</p>
         </li>
         <li className={classes.info}>
           <p>습도: {humidity}%</p>
@@ -36,7 +46,7 @@ const Information = ({ props,data}) => {
         </li>
       </ul>
     </Card>
-  )
-}
+  );
+};
 
-export default Information
+export default Information;
