@@ -9,11 +9,11 @@ const Search = () => {
   const [region, setRegion] = useState("")
   const dispatch = useDispatch();
 
-  const inputChangeHandler = (e) => {
+  const inputChangeHandler = (e:React.ChangeEvent<HTMLInputElement>) => {
     setRegion(e.target.value)
   }
 
-  const weatherChangeHandler = (e) => {
+  const weatherChangeHandler = (e:React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     dispatch(weatherActions.isLoadingChange(true))
     dispatch(weatherActions.regionChange(region));
