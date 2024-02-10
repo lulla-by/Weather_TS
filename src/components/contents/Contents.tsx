@@ -5,10 +5,11 @@ import { useSelector } from 'react-redux';
 import classes from './Contents.module.css';
 import Loading from 'ui/Loading';
 
+
 const Contents = () => {
-  const weatherData = useSelector((state) => state.chartWeather);
-  const isLoading = useSelector((state) => state.isLoading);
-  const filteredData = Object.entries(weatherData).map(([key, value]) => {
+  const weatherData = useSelector((state:any) => state.chartWeather);
+  const isLoading = useSelector((state:any) => state.isLoading);
+  const filteredData = Object.entries(weatherData).map(([key, value]: any) => {
     return value[key];
   });
   const data = filteredData[0];

@@ -7,13 +7,19 @@ import { dfsXyConv } from 'utils/xyConverter';
 import { makeBaseTime } from 'utils/getBaseTime';
 import { groupByFcstTime } from 'utils/getData';
 
+declare global {
+  interface Window {
+    kakao: any;
+  }
+}
+
 const { kakao } = window;
 
 const KakaoMap = () => {
-  const state = useSelector((state) => state.region);
+  const state = useSelector((state:any) => state.region);
   const dispatch = useDispatch();
   const container = useRef(null);
-  const [map, setMap] = useState(null);
+  const [map, setMap] = useState<any>(null);
 
   // 날씨정보를 받는 함수
   const getWeatherData = async (lat, long) => {

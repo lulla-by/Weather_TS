@@ -8,7 +8,7 @@ import { useSelector } from 'react-redux';
 import AcessDenined from 'components/error/AcessDenined';
 
 function App() {
-  const permission = useSelector(state => state.isLocationPermission)
+  const permission = useSelector((state:any) => state.isLocationPermission)
   return (
     <Fragment>
       <header ><h1 className={classes.header}>OOTD WITH WEATHER</h1></header>

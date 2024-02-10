@@ -5,8 +5,8 @@ import Button from 'ui/Button';
 import Loading from 'ui/Loading';
 
 const Chart = () => {
-  const weatherData = useSelector((state) => state.chartWeather);
-  const isLoading = useSelector((state) => state.isLoading);
+  const weatherData = useSelector((state:any) => state.chartWeather);
+  const isLoading = useSelector((state:any) => state.isLoading);
   const [chartShowStata, setChartShowData] = useState(true);
   const chartName = chartShowStata ? 'Close Chart' : 'Show Chart';
 
@@ -27,20 +27,20 @@ const Chart = () => {
     let precipitationData = [];
     let nowArr = [];
 
-    for (let i = 0; i < data.length; i++) {
-      for (let key in data[i]) {
-        let temperature = data[i][key].T1H;
-        let precipitation =
-          data[i][key].RN1 === '강수없음'
-            ? 0
-            : parseFloat(data[i][key].RN1.replace('mm', ''));
-        let now = convertDateTime(key);
-        nowArr.push(now);
-        temperatureData.push(temperature);
+    // for (let i = 0; i < data.length; i++) {
+    //   for (let key in data[i]) {
+    //     let temperature = data[i][key].T1H;
+    //     let precipitation =
+    //       data[i][key].RN1 === '강수없음'
+    //         ? 0
+    //         : parseFloat(data[i][key].RN1.replace('mm', ''));
+    //     let now = convertDateTime(key);
+    //     nowArr.push(now);
+    //     temperatureData.push(temperature);
 
-        precipitationData.push(precipitation);
-      }
-    }
+    //     precipitationData.push(precipitation);
+    //   }
+    // }
 
     return [
       {
@@ -114,9 +114,9 @@ const Chart = () => {
 
   return (
     <div>
-      {chartShowStata && (
+      {/* {chartShowStata && (
         <ApexCharts options={options} series={makedSeries} height={350} />
-      )}
+      )} */}
       <Button
         onClick={() => {
           setChartShowData(!chartShowStata);

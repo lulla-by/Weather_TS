@@ -3,10 +3,10 @@ import Card from 'ui/Card'
 import classes from './information.module.css'
 import { getNowWeather } from 'utils/getNowWeather';
 
-const Information = ({ props}) => {
+const Information = ({ props,data}) => {
 
   const { temperature, precipitation, humidity, precipitationType, skyCondition } = props;
-  const weatherClasseName = getNowWeather(precipitationType, skyCondition)
+  const weatherClasseName:any = getNowWeather(precipitationType, skyCondition)
   const weatherMsg = "현재 날씨: " + (weatherClasseName && weatherClasseName[1])
 
   const weatherImgSrc = require(`assets/${weatherClasseName[1].split(" ").join("")}.png`)

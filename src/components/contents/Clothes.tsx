@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux'
 const Clothes = ({ props,data }) => {
   let { temperature, precipitationType } = props;
 
-  let region = useSelector(state => state.region)
+  let region = useSelector((state:any) => state.region)
   
   const getOuterItem = (temp) => {
     if (temp < 0) {
