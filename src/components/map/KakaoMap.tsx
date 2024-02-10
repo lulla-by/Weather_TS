@@ -22,11 +22,11 @@ const KakaoMap = () => {
   const [map, setMap] = useState<any>(null);
 
   // 날씨정보를 받는 함수
-  const getWeatherData = async (lat, long) => {
+  const getWeatherData = async (lat:any, long:any) => {
     try {
       const { baseDate, baseTime } = makeBaseTime();
       const serviceKey = process.env.REACT_APP_WEATHER_KEY;
-      const numOfRows = 1000;
+      const numOfRows = 60;
       const pageNo = 1;
       const { x: nx, y: ny } = dfsXyConv('toXY', lat, long);
 
@@ -38,6 +38,7 @@ const KakaoMap = () => {
       const res = await axios.get(url);
       const data = await res.data.response.body.items.item;
       const filteredData = groupByFcstTime(data);
+      
       dispatch(weatherActions.changeChartWeather(filteredData));
     } catch (error) {
       alert('다시 입력해주세요');
@@ -45,7 +46,7 @@ const KakaoMap = () => {
     dispatch(weatherActions.initialRegion({ lat, long }));
   };
 
-  function addMarker(position) {
+  function addMarker(position:any) {
     let marker = new kakao.maps.Marker({
       position: position,
     });
@@ -54,7 +55,7 @@ const KakaoMap = () => {
   }
 
   // 지도에 표시하는 함수
-  const createMap = async (position) => {
+  const createMap = async (position:any) => {
     try {
       const coords = position.coords;
       const { latitude, longitude } = coords;
@@ -72,7 +73,7 @@ const KakaoMap = () => {
       // 검색한 값이 있을 경우
       if (state !== '') {
         const geocoder = new kakao.maps.services.Geocoder();
-        geocoder.addressSearch(state, function (result, status) {
+        geocoder.addressSearch(state, function (result:any, status:any) {
           // 1. 유효하지 않은 주소일 경우 => 기본 위경도 보내기
           if (status === 'ZERO_RESULT') {
             alert('주소지를 확인해주세요');
