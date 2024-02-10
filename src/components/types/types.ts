@@ -1,3 +1,5 @@
+import { ReactNode } from "react";
+
 export interface WeatherItem {
   LGT: string;
   PTY: string;
@@ -45,4 +47,9 @@ export interface ContentsPropsType {
     precipitationType: string;
     skyCondition: string;
   };
+}
+
+
+export interface ChildrenProps {
+  children:ReactNode;
 }

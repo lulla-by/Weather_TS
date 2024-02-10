@@ -1,7 +1,7 @@
-import React from 'react'
+import { ChildrenProps } from "components/types/types"
 import classes from "./Layout.module.css"
 
-const Layout = (props) => {
+const Layout = (props:ChildrenProps) => {
   return (
     <div className={classes.container}>{props.children}</div>
   )
