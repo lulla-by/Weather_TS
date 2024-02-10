@@ -3,8 +3,8 @@ export function makeBaseTime() {
   let year = now.getFullYear().toString().padStart(4, "0");
   let month = (now.getMonth() + 1).toString().padStart(2, "0");
   let day = now.getDate().toString().padStart(2, "0");
-  let hours = now.getHours();
-  let minutes = now.getMinutes();
+  let hours:number |string = now.getHours();
+  let minutes:number |string = now.getMinutes();
 
   if (hours === 0 && minutes < 30) {
     const previousDay = new Date(now.getTime() - (24 * 60 * 60 * 1000));
