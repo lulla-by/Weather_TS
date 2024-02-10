@@ -1,7 +1,13 @@
-import React from 'react'
+import React, { ReactNode } from 'react'
 import classes from "./Button.module.css"
 
-const Button = (props) => {
+
+interface ButtonProps {
+  onClick?: () => void
+  children:ReactNode;
+  type?:string;
+}
+const Button = (props:ButtonProps) => {
   return (
     <button onClick={props.onClick} className={classes.btn}>{props.children}</button>
   )
