@@ -6,9 +6,10 @@ import classes from "App.module.css"
 import Chart from 'components/chart/Chart';
 import { useSelector } from 'react-redux';
 import AcessDenined from 'components/error/AcessDenined';
+import { StoreInitialType, WeatherItem } from 'components/types/types';
 
 function App() {
-  const permission = useSelector((state:any) => state.isLocationPermission)
+  const permission = useSelector((state:StoreInitialType<WeatherItem>) => state.isLocationPermission)
   return (
     <Fragment>
       <header ><h1 className={classes.header}>OOTD WITH WEATHER</h1></header>
