@@ -4,8 +4,7 @@ import { ContentsWeatherItem, WeatherData } from "components/types/types";
 type ProcessedWeatherData = {
   [datetime: string]: {
     [category: string]: {
-      [fcstDateAndTime: string]: any; // fcstValue에 대한 타입은 해당 데이터의 실제 형태에 따라 수정 필요
-      // 다른 속성이 필요하다면 추가 가능
+      [fcstDateAndTime: string]: string;
     };
   };
 };
