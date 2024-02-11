@@ -11,7 +11,7 @@ const Contents = () => {
     (state: StoreInitialType<WeatherItem>) => state.chartWeather
   );
   const isLoading = useSelector((state: StoreInitialType<WeatherItem>) => state.isLoading);
-  const filteredData = Object.entries(weatherData).map(([key, value]:any) => {
+  const filteredData = Object.entries(weatherData).map(([key, value]) => {
     return value[key];
   });
   const data = filteredData[0];
