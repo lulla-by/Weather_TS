@@ -1,5 +1,6 @@
 import {
   StoreInitialType,
+  WeatherDataObj,
   WeatherItem,
 } from 'components/types/types';
 import React, { useState } from 'react';
@@ -39,7 +40,8 @@ const Chart = () => {
     return value;
   });
 
-  const makeSeries = (data: any) => {
+  const makeSeries = (data: WeatherDataObj<WeatherItem>[]) => {
+    
     let temperatureData: number[] = [];
     let precipitationData: number[] = [];
     let nowArr: string[] = [];
