@@ -25,7 +25,7 @@
     "deploy": "gh-pages -d build",
     "predeploy": "npm run build"
   },
-  "homepage": "https://lulla-by.github.io/weather",
+  "homepage": "https://lulla-by.github.io/Weather_TS",
   "eslintConfig": {
     "extends": [
       "react-app",
