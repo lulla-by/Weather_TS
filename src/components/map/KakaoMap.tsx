@@ -6,6 +6,7 @@ import { weatherActions } from 'store/weatherReducer';
 import { dfsXyConv } from 'utils/xyConverter';
 import { makeBaseTime } from 'utils/getBaseTime';
 import { groupByFcstTime } from 'utils/getData';
+import { StoreInitialType, WeatherItem } from 'components/types/types';
 
 declare global {
   interface Window {
@@ -13,16 +14,35 @@ declare global {
   }
 }
 
+interface AddressResult {
+  x: string;
+  y: string;
+}
+
+interface LatLong {
+  La: number;
+  Ma: number;
+}
+
+interface Coords {
+  coords: {
+    latitude: number;
+    longitude: number;
+  };
+}
+
 const { kakao } = window;
 
 const KakaoMap = () => {
-  const state = useSelector((state:any) => state.region);
+  const state = useSelector(
+    (state: StoreInitialType<WeatherItem>) => state.region
+  );
   const dispatch = useDispatch();
   const container = useRef(null);
   const [map, setMap] = useState<any>(null);
 
   // 날씨정보를 받는 함수
-  const getWeatherData = async (lat:any, long:any) => {
+  const getWeatherData = async (lat: number, long: number) => {
     try {
       const { baseDate, baseTime } = makeBaseTime();
       const serviceKey = process.env.REACT_APP_WEATHER_KEY;
@@ -46,7 +66,7 @@ const KakaoMap = () => {
     dispatch(weatherActions.initialRegion({ lat, long }));
   };
 
-  function addMarker(position:any) {
+  function addMarker(position: LatLong) {
     let marker = new kakao.maps.Marker({
       position: position,
     });
@@ -55,7 +75,8 @@ const KakaoMap = () => {
   }
 
   // 지도에 표시하는 함수
-  const createMap = async (position:any) => {
+  const createMap = async (position: Coords) => {
+
     try {
       const coords = position.coords;
       const { latitude, longitude } = coords;
@@ -73,7 +94,8 @@ const KakaoMap = () => {
       // 검색한 값이 있을 경우
       if (state !== '') {
         const geocoder = new kakao.maps.services.Geocoder();
-        geocoder.addressSearch(state, function (result:any, status:any) {
+        geocoder.addressSearch(state, function (result: AddressResult[], status: string) {
+
           // 1. 유효하지 않은 주소일 경우 => 기본 위경도 보내기
           if (status === 'ZERO_RESULT') {
             alert('주소지를 확인해주세요');
