@@ -27,6 +27,9 @@ export interface ContentsWeatherItem {
 export interface WeatherData<T> {
   [datetime: string]: T[];
 }
+export interface WeatherDataObj<T> {
+  [datetime: string]: T;
+}
 
 export interface StoreInitialType<T> {
   current: {
