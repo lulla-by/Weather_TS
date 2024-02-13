@@ -3,14 +3,17 @@
 ## 💡 프로젝트 소개
 ![image](https://github.com/lulla-by/weather/assets/107671084/4c3d873b-0992-4cbf-96d7-7a60748f1d85)
 
-### 🏡 url: https://lulla-by.github.io/Weather_TS/
+#### 기존에 제작한 weather 프로젝트의 TS 마이그레이션 버전입니다.
 
-#### 검색으로 원하는 위치로 이동하여 날씨정보를 확인하세요! 
-#### 차트와 상세 카드를 통해 현재시 기준의 날씨를 알려드리고 옷차림을 추천해드립니다!
+<a href ="https://github.com/lulla-by/weather">javascript 버전 weather 레포지토리</a>
+### 검색으로 원하는 위치로 이동하여 날씨정보를 확인하세요!
+### 차트와 상세 카드를 통해 현재시 기준의 날씨를 알려드리고 옷차림을 추천해드립니다!
+## 🏡 url: https://lulla-by.github.io/Weather_TS/
+
 <br/>
 
-## 📆 Period
-### 2023.07.04 ~ 2023.07.10
+## 📆 마이그레이션 진행 기간
+### 2024.02.05 ~ 2023.02.11
 
 </br>
 
